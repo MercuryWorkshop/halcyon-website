@@ -1,0 +1,67 @@
+* {
+  font-family: "Inter";
+  color: #e4e4e7;
+}
+
+body {
+  background-color: #18181b;
+  margin: 0px;
+}
+
+#navbar {
+  background-color: #27272a;
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+}
+
+#title {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  text-decoration: none;
+}
+#title > h1 {
+  margin: 12px;
+}
+
+#links {
+  display: flex;
+  margin-right: 8px;
+  text-decoration: none;
+}
+#links > a {
+  margin: 12px;
+}
+
+#content {
+  padding: 12px;
+  margin-top: 64px;
+  z-index: 1;
+}
+
+#content_title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#content_title > * {
+  max-width: 750px;
+}
+
+#clouds_viewport {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  perspective: 400;
+}
+#clouds_world {
+  position: absolute;
+}
