@@ -1,4 +1,4 @@
-# E-Halycon Website:
+# E-Halycon Website
 
 WIP website for E-Halycon
 

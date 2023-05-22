@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Clouds Test Page</title>
+
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/clouds.css">
+
+    <script>
+      window.onload = () => {
+        let script = document.createElement("script");
+        script.src = "/static/js/clouds.js";
+        script.onload = () => {generate()};
+        document.head.append(script);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="clouds_viewport">
+      <div id="clouds_world"></div>
+    </div>
+  </body>
+</html>

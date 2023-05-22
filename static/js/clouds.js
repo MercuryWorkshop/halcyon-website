@@ -110,7 +110,7 @@ function createCloud() {
     let data = {
       x: -128 + Math.random() * 256,
       y: -128 + Math.random() * 256,
-      z: -100 + Math.random() * 200,
+      z: -100 + Math.random() * 500,
       rotation: Math.random() * 360,
       scale: 0.25 + Math.random(),
       speed: Math.random()
