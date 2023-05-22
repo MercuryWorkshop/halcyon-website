@@ -30,8 +30,8 @@ https://github.com/spite/CSS3DClouds/
   worldXAngle and worldYAngle are floats that hold the world rotations,
   d is an int that defines the distance of the world from the camera
 */
-let world = document.getElementById("clouds_world");
-let viewport = document.getElementById("clouds_viewport");
+let world = document.getElementById("cloud_world");
+let viewport = document.getElementById("cloud_viewport");
 let worldXAngle = 0;
 let worldYAngle = 0;
 let d = 0;
@@ -80,8 +80,6 @@ function generate() {
   for( var j = 0; j < 5; j++ ) {
     objects.push(createCloud());
   }
-
-  update()
 }
 
 /*
@@ -110,10 +108,10 @@ function createCloud() {
     let data = {
       x: -128 + Math.random() * 256,
       y: -128 + Math.random() * 256,
-      z: -100 + Math.random() * 500,
+      z: -100 + Math.random() * 200,
       rotation: Math.random() * 360,
       scale: 0.25 + Math.random(),
-      speed: Math.random()
+      speed: -1/16 + Math.random()/8
     };
     cloud_layer.className = "cloud_layer";
     cloud_layer.style.transform = `
@@ -140,15 +138,21 @@ function createCloud() {
 function update(){
   for( var j = 0; j < layers.length; j++ ) {
     var layer = layers[ j ];
-    layer.data.rotation += layer.data.speed;
-    var t = "translateX( " + layer.data.x + "px ) \
-      translateY( " + layer.data.y + "px ) \
-      translateZ( " + layer.data.z + "px ) \
-      rotateY( " + ( - worldYAngle ) + "deg ) \
-      rotateX( " + ( - worldXAngle ) + "deg ) \
-      scale( " + layer.data.scale + ")";
-    layer.style.transform = t;
+    let data = layer.data;
+    data.rotation += data.speed;
+
+    layer.style.transform = `
+      translateX(${data.x}px)
+      translateY(${data.y}px)
+      translateZ(${data.z}px)
+      rotateY(${-worldYAngle}deg)
+      rotateX(${-worldXAngle}deg)
+      rotateZ(${data.rotation}deg)
+      scale(${data.scale})
+    `;
   }
 
   requestAnimationFrame(update);
 }
+
+update();
