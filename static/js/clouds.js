@@ -27,35 +27,44 @@ https://github.com/spite/CSS3DClouds/
 /*
   Defining our variables
   world and viewport are DOM elements,
-  worldXAngle and worldYAngle are floats that hold the world rotations,
-  d is an int that defines the distance of the world from the camera
+  world_angle_x and world_angle_y are floats that hold the world rotations,
+  distance is an int that defines the distance of the world from the camera
 */
 let world = document.getElementById("cloud_world");
 let viewport = document.getElementById("cloud_viewport");
-let worldXAngle = 0;
-let worldYAngle = 0;
-let d = 0;
+let world_angle_x = 0;
+let world_angle_y = 0;
+let distance = 0;
+let frame_count = 0;
+let previous_time = 0;
+let previous_frame = 0;
+let framerate;
 
-/*
-  Event listener to transform mouse position into angles
-  from -180 to 180 degress, both vertically and horizontally
-*/
-window.addEventListener( "mousemove", function(event) {
-  worldYAngle = -( .5 - ( event.clientX / window.innerWidth ) ) * 180;
-  worldXAngle = ( .5 - ( event.clientY / window.innerHeight ) ) * 180;
-  updateView();
+window.addEventListener("mousemove", event => {
+  let degrees = 90; //camera rotation range
+  world_angle_y = -(0.5 - (event.clientX / window.innerWidth)) * degrees;
+  world_angle_x = (0.5 - (event.clientY / window.innerHeight)) * degrees;
+  update_view();
 });
+
+window.addEventListener("scroll", event => {
+  let pos = document.documentElement.scrollTop || document.body.scrollTop;
+  distance = pos;
+  update_view();
+})
 
 /*
   Changes the transform property of world to be
-  translated in the Z axis by d pixels,
-  rotated in the X axis by worldXAngle degrees and
-  rotated in the Y axis by worldYAngle degrees.
+  translated in the Z axis by distance pixels,
+  rotated in the X axis by world_angle_x degrees and
+  rotated in the Y axis by world_angle_y degrees.
 */
-function updateView() {
-  world.style.transform = "translateZ( " + d + "px ) \
-  rotateX( " + worldXAngle + "deg) \
-  rotateY( " + worldYAngle + "deg)";
+function update_view() {
+  world.style.transform = `
+    translateZ(${distance}px)
+    rotateX(${world_angle_x}deg)
+    rotateY(${world_angle_y}deg)
+  `;
 }
 
 /*
@@ -78,7 +87,7 @@ function generate() {
   }
 
   for( var j = 0; j < 5; j++ ) {
-    objects.push(createCloud());
+    objects.push(create_cloud());
   }
 }
 
@@ -87,12 +96,12 @@ function generate() {
   Each cloud layer has random position ( x, y, z ), rotation (a)
   and rotation speed (s). layers[] keeps track of those divs.
 */
-function createCloud() {
+function create_cloud() {
   let cloud_base = document.createElement("div");
   cloud_base.className = "cloud_base";
 
-  let cloud_x = Math.random() * 500;
-  let cloud_y = Math.random() * 500;
+  let cloud_x = -window.innerWidth/4 + Math.random()*window.innerWidth/2;
+  let cloud_y = -window.innerHeight/4 + Math.random()*window.innerHeight/2;
   let cloud_z = Math.random() * 200;
 
   cloud_base.style.transform = `
@@ -106,12 +115,12 @@ function createCloud() {
   for (let i=0; i<iterations; i++) {
     let cloud_layer = document.createElement("div");
     let data = {
-      x: -128 + Math.random() * 256,
-      y: -128 + Math.random() * 256,
-      z: -100 + Math.random() * 200,
+      x: -256 + Math.random() * 512,
+      y: -256 + Math.random() * 512,
+      z: -256 + Math.random() * 512,
       rotation: Math.random() * 360,
-      scale: 0.25 + Math.random(),
-      speed: -1/16 + Math.random()/8
+      scale: 0.25 + Math.random()/2,
+      speed: -1/32 + Math.random()/16
     };
     cloud_layer.className = "cloud_layer";
     cloud_layer.style.transform = `
@@ -130,6 +139,25 @@ function createCloud() {
   return cloud_base;
 }
 
+function timer() {
+  let now = performance.now()/1000;
+  framerate = (frame_count - previous_frame) / (now - previous_time);
+  previous_frame = frame_count;
+  previous_time = now;
+}
+
+setInterval(timer, 500);
+
+function apply_rotations() {
+  for (let layer of layers) {
+    let data = layer.data;
+    data.rotation += data.speed;
+    data.rotation %= 360;
+  }
+}
+
+setInterval(apply_rotations, 50/3) //60 times/sec
+
 /*
   Iterate layers[], update the rotation and apply the
   inverse transformation currently applied to the world.
@@ -139,19 +167,19 @@ function update(){
   for( var j = 0; j < layers.length; j++ ) {
     var layer = layers[ j ];
     let data = layer.data;
-    data.rotation += data.speed;
 
     layer.style.transform = `
       translateX(${data.x}px)
       translateY(${data.y}px)
       translateZ(${data.z}px)
-      rotateY(${-worldYAngle}deg)
-      rotateX(${-worldXAngle}deg)
+      rotateY(${-world_angle_y}deg)
+      rotateX(${-world_angle_x}deg)
       rotateZ(${data.rotation}deg)
       scale(${data.scale})
     `;
   }
 
+  frame_count++;
   requestAnimationFrame(update);
 }
 

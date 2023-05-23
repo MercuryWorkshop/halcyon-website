@@ -1,11 +1,12 @@
 #cloud_viewport {
-  position: absolute;
+  position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
-  perspective: 1000;
+  perspective: 1000px;
   overflow: hidden;
+  z-index: -1;
 }
 #cloud_viewport * {
   transform-style: preserve-3d;
@@ -13,16 +14,26 @@
 
 #cloud_world {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -256px;
+  margin-top: -256px;
+  height: 512px;
+  width: 512px;
+  background-color: rgba(255, 0, 0, 0.3);
 }
 
 .cloud_base {
   height: 20px;
   width: 20px;
-  left: 256px;
-  top: 256px;
+  left: 50%;
+  top: 50%;
   margin-left: -10px;
   margin-top: -10px;
   position: absolute;
+  
+  background-color: pink;
+  border: 3px solid white;
 }
 
 .cloud_layer {
@@ -34,13 +45,13 @@
   margin-top: -128px;
   position: absolute;
   
-  /*
+  
   background-color: aqua;
   opacity: 0.2;
-  border: 1px solid white;
-  */
-
-  background-image: url("/static/img/cloud.png");
-  opacity: 0.3;
+  border: 3px solid white;
   
+  /*
+  background-image: url("/static/img/cloud.webp");
+  opacity: 0.1;
+  */
 }

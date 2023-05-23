@@ -17,10 +17,33 @@
         document.head.append(script);
       }
     </script>
+    <style>
+      #container {
+        position: absolute;
+        width: 100%;
+      }
+      #content {
+        display: flex;
+        flex-direction: column;
+      }
+      #spacer {
+        height: 200vh;
+      }
+    </style>
   </head>
   <body>
-    <div id="cloud_viewport">
-      <div id="cloud_world"></div>
+    <div id="container">
+      <div id="cloud_viewport">
+        <div id="cloud_world"></div>
+      </div>
+      <div id="content">
+        <div id="spacer">
+        </div>
+        <div>
+          <h1>title</h1>
+          <p>body here</p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
