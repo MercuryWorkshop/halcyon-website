@@ -13,6 +13,7 @@
       window.onload = () => {
         let script = document.createElement("script");
         script.src = "/static/js/clouds.js";
+        script.onload = () => {generate(); window.dispatchEvent(new Event("scroll"))}
         document.head.append(script);
       }
     </script>
@@ -31,14 +32,64 @@
         <a>Contact</a>
       </div>
     </div>
-    
+    <div id="cloud_viewport">
+      <div id="cloud_world"></div>
+    </div>
     <div id="content">
       <div id="content_title">
         <h1>Defog Your Chromebook</h1>
-        <p>E-Halcyon is a bypass for "The Fog," which is Google's mitigation for the unenrollment and downgrading of Chrome OS devices. It allows you to completely bypass enterprise enrollement on managed Chromebooks, even if it is on a version where SH1MMER is patched.</p>
+        <p>E-Halcyon is a bypass for "The Fog," which is Google's mitigation for the unenrollment and downgrading of Chrome OS devices. It allows you to completely bypass enterprise enrollment on managed Chromebooks, even if it is on a version where SH1MMER is patched.</p>
+        <p style="margin-top: 0px">RecoMod is a Chrome OS recovery image modification toolkit allowing for arbitrary code execution in verified mode. It provides the user with utilities that are useful for debugging and repair.</p>
       </div>
-      <div id="clouds_viewport">
-        <div id="clouds_world"></div>
+
+      <div id="spacer">
+        <script>
+          document.getElementById("spacer").style.height = "160vh";
+        </script>
+      </div>
+
+      <div id="content_description">
+        <h1>A Use Case for Everyone</h1>
+        <!-- someone verify that this is accurate pls -->
+        <div class="simple_table">
+          <div>
+            <h2>Students</h2>
+            <p>E-Halcyon can be used as a way to bypass Google's SH1MMER mitigation, allowing you to once again use your managed Chromebook as if it were never enrolled. It also doesn't modify the device's internal storage, and simply removing the drive E-Halcyon is installed on will wipe any trace of it from the device.</p>
+          </div>
+          <div>
+            <h2>Hobbyists</h2>
+            <p>Want to screw around with Chrome OS without needing developer mode? E-Halcyon and <a href="https://github.com/MercuryWorkshop/RecoMod">RecoMod</a> provide an easy way do do that. It also serves as an alternative to MrChromebox's fixflags images in case you can no longer boot Chrome OS off of the internal storage.</p>
+          </div>
+          <div>
+            <h2>Sysadmins</h2>
+            <p>E-Halcyon, as well as the associated <a href="https://github.com/MercuryWorkshop/RecoMod">RecoMod</a> tool, contain many utilities which are useful for the diagnosis and repair of Chrome OS devices. It can also fix certain issues with the device's firmware which may otherwise prevent Chrome OS from booting. </p>
+          </div>
+        </div>
+
+        <h1>Features</h1>
+        <div class="simple_table">
+          <div>
+            <h2>E-Halcyon</h2>
+            <ul>
+              <li>(coolelectronics pls fill these in)</li>
+              <li>(make a pr on the repo ig)</li>
+            </ul>
+          </div>
+          <div>
+            <h2>RecoMod</h2>
+            <ul>
+              <li>(i'm not too familiar with this stuff)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer">
+        <img src="/static/img/mercury.png" width="48px" height="48px">
+        <div>
+          <p><b>E-Halcyon / RecoMod</b></p>
+          <a id="copyright_text" href="/copyright">Copyright (c) 2023 Mercury Workshop</a>
+        </div>
       </div>
     </div>
   </body>

@@ -44,7 +44,7 @@ let framerate;
 
 //mouse event listeners
 window.addEventListener("mousemove", event => {
-  let degrees = 90; //camera rotation range
+  let degrees = 30; //camera rotation range
   world_angle_y = -(0.5 - (event.clientX / window.innerWidth)) * degrees;
   world_angle_x = (0.5 - (event.clientY / window.innerHeight)) * degrees;
   update_view();
@@ -85,7 +85,7 @@ function create_cloud() {
   cloud_base.className = "cloud_base";
 
   let cloud_x = -window.innerWidth/4 + Math.random()*window.innerWidth/2;
-  let cloud_y = Math.random()*window.innerHeight/4;
+  let cloud_y = Math.random()*window.innerHeight/2;
   let cloud_z = Math.random() * 200;
 
   cloud_base.style.transform = `

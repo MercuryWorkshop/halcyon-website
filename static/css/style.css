@@ -43,6 +43,9 @@ body {
   margin-top: 64px;
   z-index: 1;
 }
+#content h1 {
+  margin-bottom: 4px;
+}
 
 #content_title {
   display: flex;
@@ -52,4 +55,39 @@ body {
 }
 #content_title > * {
   max-width: 750px;
+}
+
+#content_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#footer {
+  background-color: #27272a;
+  margin: -12px;
+  margin-top: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px
+}
+#footer * p {
+  margin: 0px;
+  line-height: 1.5
+}
+#copyright_text {
+  text-decoration: none;
+  font-style: italic;
+  font-size: 14px;
+  color: #a1a1aa;
+}
+
+.simple_table {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+.simple_table > * {
+  flex-basis: 100%;
 }
