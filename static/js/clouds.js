@@ -43,15 +43,26 @@ let previous_frame = 0;
 let framerate;
 
 //mouse event listeners
-window.addEventListener("mousemove", event => {
-  let degrees = 30; //camera rotation range
-  world_angle_y = -(0.5 - (event.clientX / window.innerWidth)) * degrees;
-  world_angle_x = (0.5 - (event.clientY / window.innerHeight)) * degrees;
-  update_view();
+// window.addEventListener("mousemove", event => {
+//   let degrees = 30; //camera rotation range
+//   world_angle_y = -(0.5 - (event.clientX / window.innerWidth)) * degrees;
+//   world_angle_x = (0.5 - (event.clientY / window.innerHeight)) * degrees;
+//   update_view();
+// });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
 });
 window.addEventListener("scroll", event => {
   let pos = document.documentElement.scrollTop || document.body.scrollTop;
-  distance = pos;
+  let max = document.documentElement.scrollHeight || document.body.scrollHeight;
+  distance = (pos / max) * 1800;
+  // distance = pos;
   update_view();
 })
 
@@ -74,7 +85,7 @@ function generate() {
     }
   }
 
-  for(let i=0; i<5; i++) {
+  for (let i = 0; i < 5; i++) {
     objects.push(create_cloud());
   }
 }
@@ -84,8 +95,8 @@ function create_cloud() {
   let cloud_base = document.createElement("div");
   cloud_base.className = "cloud_base";
 
-  let cloud_x = -window.innerWidth/4 + Math.random()*window.innerWidth/2;
-  let cloud_y = Math.random()*window.innerHeight/2;
+  let cloud_x = -window.innerWidth / 4 + Math.random() * window.innerWidth / 2;
+  let cloud_y = Math.random() * window.innerHeight / 2;
   let cloud_z = Math.random() * 200;
 
   cloud_base.style.transform = `
@@ -95,8 +106,8 @@ function create_cloud() {
   `;
   world.append(cloud_base);
 
-  let iterations = 5 + Math.round(Math.random()*10);
-  for (let i=0; i<iterations; i++) {
+  let iterations = 5 + Math.round(Math.random() * 10);
+  for (let i = 0; i < iterations; i++) {
     let cloud_layer = document.createElement("div");
     let data = {
       x: -256 + Math.random() * 512,
@@ -104,7 +115,7 @@ function create_cloud() {
       z: -256 + Math.random() * 512,
       rotation: Math.random() * 360,
       scale: 1 + Math.random(),
-      speed: -1/32 + Math.random()/16
+      speed: -1 / 32 + Math.random() / 16
     };
     cloud_layer.className = "cloud_layer";
     cloud_layer.style.transform = `
@@ -125,7 +136,7 @@ function create_cloud() {
 
 //calculate framerate (500ms average)
 function timer() {
-  let now = performance.now()/1000;
+  let now = performance.now() / 1000;
   framerate = (frame_count - previous_frame) / (now - previous_time);
   previous_frame = frame_count;
   previous_time = now;
@@ -140,7 +151,7 @@ function apply_rotations() {
   }
 }
 
-function update(){
+function update() {
   for (let layer of layers) {
     let data = layer.data;
 
@@ -161,4 +172,4 @@ function update(){
 
 update();
 setInterval(timer, 500);
-setInterval(apply_rotations, 50/3);
+setInterval(apply_rotations, 50 / 3);
