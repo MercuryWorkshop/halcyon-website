@@ -20,7 +20,9 @@
   margin-top: -256px;
   height: 512px;
   width: 512px;
+  /*
   background-color: rgba(255, 0, 0, 0.3);
+  */
 }
 
 .cloud_base {
@@ -32,8 +34,10 @@
   margin-top: -10px;
   position: absolute;
   
+  /*
   background-color: pink;
   border: 3px solid white;
+  */
 }
 
 .cloud_layer {
@@ -45,13 +49,12 @@
   margin-top: -128px;
   position: absolute;
   
-  
+  /*
   background-color: aqua;
   opacity: 0.2;
   border: 3px solid white;
+  */
   
-  /*
   background-image: url("/static/img/cloud.webp");
   opacity: 0.1;
-  */
 }
