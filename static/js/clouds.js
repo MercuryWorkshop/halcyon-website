@@ -43,12 +43,12 @@ let previous_frame = 0;
 let framerate;
 
 //mouse event listeners
-// window.addEventListener("mousemove", event => {
-//   let degrees = 30; //camera rotation range
-//   world_angle_y = -(0.5 - (event.clientX / window.innerWidth)) * degrees;
-//   world_angle_x = (0.5 - (event.clientY / window.innerHeight)) * degrees;
-//   update_view();
-// });
+window.addEventListener("mousemove", event => {
+  let degrees = 10; //camera rotation range 
+  world_angle_y = -(0.5 - (event.clientX / window.innerWidth)) * degrees;
+  world_angle_x = (0.5 - (event.clientY / window.innerHeight)) * degrees;
+  update_view();
+});
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -61,7 +61,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener("scroll", event => {
   let pos = document.documentElement.scrollTop || document.body.scrollTop;
   let max = document.documentElement.scrollHeight || document.body.scrollHeight;
-  distance = (pos / max) * 1800;
+  distance = (pos / max) * 2400;
   // distance = pos;
   update_view();
 })
@@ -111,7 +111,7 @@ function create_cloud() {
     let cloud_layer = document.createElement("div");
     let data = {
       x: -256 + Math.random() * 512,
-      y: -256 + Math.random() * 512,
+      y: -170 + Math.random() * 340,
       z: -256 + Math.random() * 512,
       rotation: Math.random() * 360,
       scale: 1 + Math.random(),

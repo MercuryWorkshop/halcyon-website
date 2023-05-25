@@ -1,11 +1,13 @@
 * {
   font-family: "Inter";
   color: #e4e4e7;
+  scroll-margin-top: 64px;
 }
 
 body {
   background-color: #18181b;
   margin: 0px;
+  scroll-behavior: smooth;
 }
 
 #navbar {
@@ -57,18 +59,16 @@ body {
   max-width: 750px;
 }
 
-.description > * {
-  max-width: 80%;
-}
-.description > p{
-  font-size: 1.3em;
-}
-
-
 .description {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.description > * {
+  max-width: 80%;
+}
+.description p {
+  font-size: 17px;
 }
 
 #footer {
@@ -80,10 +80,11 @@ body {
   align-items: flex-start;
   gap: 16px
 }
-#footer * p {
+#footer * {
   margin: 0px;
   line-height: 1.5
 }
+
 #copyright_text {
   text-decoration: none;
   font-style: italic;
@@ -91,8 +92,6 @@ body {
   color: #a1a1aa;
 }
 #fedi_plug {
-  width:100%;
-  height: 100%;
   text-decoration: none;
   font-style: italic;
   font-size: 14px;
@@ -103,25 +102,8 @@ body {
   flex-direction: column;
 }
 
-
-.simple_table {
-  display: flex;
-  width: 100%;
-  gap: 16px;
-}
-.simple_table > * {
-  flex-basis: 100%;
-}
-
-li {
-  font-size: 1.7em;
-}
-li p {
-  font-size: 0.7em;
-}
-code{
+pre {
   font-family: monospace;
-  display: box;
 }
 
 button2 {
@@ -134,18 +116,17 @@ button2 {
   color:unset;
 }
 
-#mainbutton{
-  margin:5em;
+#mainbutton {
+  margin-top: 2em;
   font-size: max-width;
   width:100%;
   text-decoration: unset;
 }
 #mainbutton * {
-  /* height: 5em; */
-  font-size: 2em;
+  font-size: 1.3em;
   width:50%
 }
 
-#navbar  a{
+#navbar a {
   text-decoration: unset;
 }
