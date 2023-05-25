@@ -44,7 +44,6 @@ body {
   padding: 12px;
   margin-top: 64px;
   z-index: 1;
-  width: 100%
 }
 #content h1 {
   margin-bottom: 4px;
@@ -66,7 +65,7 @@ body {
   align-items: center;
 }
 .description > * {
-  max-width: 80%;
+  max-width: min(80%, 800px);
 }
 .description p {
   font-size: 17px;
@@ -105,6 +104,8 @@ body {
 
 pre {
   font-family: monospace;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 button2 {
