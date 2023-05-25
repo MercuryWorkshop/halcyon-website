@@ -10,6 +10,15 @@
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="/static/css/clouds.css">
 
+  <meta name="description" content="A bypass for Google's SH1MMER mitigations, allowing you to downgrade and bypass enterprise enrollment on Chromebooks which have recieved the patch.">
+  <meta name="author" content="Mercury Workshop">
+  <meta name="keywords" content="E-Halcyon, Halcyon, RecoMod, SH1MMER, ChromeOS, Chrome OS, Chromebook, unenrollment, bypassing, exploit, unblocker">
+  <meta property="og:title" content="E-Halcyon">
+  <meta property="og:url" content="https://fog.gay">
+  <meta property="og:description" content="A bypass for Google's SH1MMER mitigations, allowing you to downgrade and bypass enterprise enrollment on Chromebooks which have recieved the patch.">
+  <meta property="og:image" content="https://fog.gay/static/img/mercury.png">
+  <meta property="og:type" content="website">
+
   <script>
     window.onload = () => {
       let script = document.createElement("script");
@@ -23,7 +32,7 @@
 <body>
   <div id="navbar">
     <a id="title" href="/">
-      <img src="/static/img/mercury.png" width="48px" height="48px">
+      <img src="/static/img/mercury.png" width="48px" height="48px" alt="The Mercury Workshop logo">
       <h1>E-Halcyon</h1>
     </a>
     <div id="links">
@@ -57,7 +66,7 @@
       <p>Now, you'll need to boot into <a href="https://sh1mmer.me">SH1MMER</a>, and press the Un-Enroll option. It won't truly unenroll you if you've received the 112 update patching unenrollment and downgrading, but it is still a necessary step for the rest of this. If you've never used SH1MMER before or don't have an image lying around, make sure to follow all the instructions on <a href="https://sh1mmer.me">sh1mmer.me</a> for unenrollment before proceeding with the rest of the tutorial here</p>
       <p>Next, you need a version 107 recovery image corresponding to your board, which you can pick up from <a href="https://chrome100.dev">chrome100.dev</a>. Once you've downloaded the right image for your board and have confirmed it's for version 107, unzip it and save it to a safe place. Now open up a terminal and type in the following commands (make sure to replace /path/to/recovery/image.bin with the actual path)</p>
       
-      <!--have to do this unless you get weird indentation on the rendered page-->
+      <!--have to do this or else you get weird indentation on the rendered page-->
       <pre>git clone https://github.com/MercuryWorkshop/RecoMod
 cd RecoMod
 chmod +x recomod.sh
@@ -74,29 +83,29 @@ sudo ./recomod.sh -i /path/to/recovery/image.bin --halcyon --rw_legacy</pre>
     <div class="description" id="FAQ">
       <h1>FAQ:</h1>
       <ul>
-        <!-- using h3 here for some actual hierarchy and no ugly css -->
+        <!-- using h2 here for some actual hierarchy and no ugly css -->
         <li>
-          <h3>How does this work?</h3>
+          <h2>How does this work?</h2>
           <p>See the <a href="https://coolelectronics.me/breaking-cros-5">writeup</a> for more information</p>
         </li>
         <li>
-          <h3>Can the admins see that I'm doing this?</h3>
+          <h2>Can the admins see that I'm doing this?</h2>
           <p>No.</p>
         </li>
         <li>
-          <h3>Why don't my history/cookies/etc save after a reboot?</h3>
+          <h2>Why don't my history/cookies/etc save after a reboot?</h2>
           <p>Unfixable restriction of cryptohome. See the <a href="https://coolelectronics.me/breaking-cros-5">writeup</a> for more information</p>
         </li>
         <li>
-          <h3>Why is my Chromebook "Missing or damaged?"</h3>
+          <h2>Why is my Chromebook "Missing or damaged?"</h2>
           <p>After installing E-Halcyon, you won't be able to boot Chrome OS normally. You'll have to keep the usb around to jumpstart the booting process</p>
         </li>
         <li>
-          <h3>Where do I report bugs?</h3>
+          <h2>Where do I report bugs?</h2>
           <p>The RecoMod <a href="//github.com/MercuryWorkshop/RecoMod">GitHub</a></p>
         </li>
         <li>
-          <h3>Why does it say "E mode not activated" when I try to boot halcyon?</h3>
+          <h2>Why does it say "E mode not activated" when I try to boot halcyon?</h2>
           <p>You spammed the E key when starting at the wrong time, or not at all</p>
         </li>
       </ul>
@@ -110,7 +119,7 @@ sudo ./recomod.sh -i /path/to/recovery/image.bin --halcyon --rw_legacy</pre>
       </ul>
     </div>
     <div id="footer">
-      <img src="/static/img/mercury.png" width="48px" height="48px">
+      <img src="/static/img/mercury.png" width="48px" height="48px" alt="The Mercury Workshop logo">
       <div style="flex-grow: 1">
         <p><b>E-Halcyon / RecoMod</b></p>
         <a id="copyright_text" href="https://mercurywork.shop">Copyright (c) 2023 Mercury Workshop</a><br>
