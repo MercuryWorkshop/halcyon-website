@@ -44,6 +44,7 @@ body {
   padding: 12px;
   margin-top: 64px;
   z-index: 1;
+  width: 100%
 }
 #content h1 {
   margin-bottom: 4px;
